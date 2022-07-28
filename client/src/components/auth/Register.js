@@ -10,7 +10,7 @@ import {
 } from '@mui/material';
 import { Login as LoginIcon } from '@mui/icons-material';
 
-export default function Login() {
+export default function Register() {
   return (
     <Box
       sx={{
@@ -29,12 +29,18 @@ export default function Login() {
             flexDirection: 'column',
           }}>
           <Typography variant='h3' color='primary'>
-            Login
+            Register
           </Typography>
+          <br />
+          <TextField label='First Name' variant='outlined' size='small' />
+          <br />
+          <TextField label='Last Name' variant='outlined' size='small' />
           <br />
           <TextField label='@' variant='outlined' size='small' />
           <br />
           <TextField label='******' variant='outlined' size='small' />
+          <br />
+          <TextField label='Repeat Password' variant='outlined' size='small' />
         </CardContent>
         <CardActions disableSpacing>
           <Button
@@ -42,7 +48,7 @@ export default function Login() {
             fullWidth
             size='small'
             startIcon={<LoginIcon />}>
-            Login
+            Register
           </Button>
         </CardActions>
       </Card>
