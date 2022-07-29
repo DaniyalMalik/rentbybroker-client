@@ -8,9 +8,9 @@ import {
   Box,
   Typography,
 } from '@mui/material';
-import { Login as LoginIcon } from '@mui/icons-material';
+import { Key as KeyIcon } from '@mui/icons-material';
 
-export default function Login() {
+export default function ForgotPassword() {
   return (
     <Box
       sx={{
@@ -29,20 +29,26 @@ export default function Login() {
             flexDirection: 'column',
           }}>
           <Typography variant='h3' color='primary'>
-            Login
+            Set New Password
           </Typography>
           <br />
-          <TextField label='@' variant='outlined' size='small' />
-          <br />
           <TextField label='******' variant='outlined' size='small' />
+          <br />
+          <TextField label='New Password' variant='outlined' size='small' />
+          <br />
+          <TextField
+            label='Repeat New Password'
+            variant='outlined'
+            size='small'
+          />
         </CardContent>
         <CardActions disableSpacing>
           <Button
             variant='contained'
             fullWidth
             size='small'
-            startIcon={<LoginIcon />}>
-            Login
+            startIcon={<KeyIcon />}>
+            Change
           </Button>
         </CardActions>
       </Card>

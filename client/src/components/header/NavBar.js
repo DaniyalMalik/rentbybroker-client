@@ -10,16 +10,18 @@ import {
   Toolbar,
   IconButton,
   Typography,
+  Avatar,
+  Button,
 } from '@mui/material';
 import {
   More as MoreIcon,
   Notifications as NotificationsIcon,
-  Mail as MailIcon,
   Menu as MenuIcon,
   Search as SearchIcon,
   AccountCircle,
 } from '@mui/icons-material';
 import Drawer from './Drawer';
+import { Link } from 'react-router-dom';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -61,36 +63,26 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function PrimarySearchAppBar() {
+export default function NavBar() {
   const [anchorEl, setAnchorEl] = React.useState(0);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(0);
   const [left, setLeft] = React.useState(false);
+  const [loggedIn, setLoggedIn] = React.useState(true);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-  const toggleDrawer = (open) => {
-    // if (
-    //   event &&
-    //   event.type === 'keydown' &&
-    //   (event.key === 'Tab' || event.key === 'Shift')
-    // ) {
-    //   return;
-    // }
+  const toggleDrawer = (open, event) => {
+    if (
+      event &&
+      event.type === 'keydown' &&
+      (event.key === 'Tab' || event.key === 'Shift')
+    ) {
+      return;
+    }
 
     setLeft(open);
   };
-  //   const toggleDrawer = (open) => (event) => {
-  //     if (
-  //       event &&
-  //       event.type === 'keydown' &&
-  //       (event.key === 'Tab' || event.key === 'Shift')
-  //     ) {
-  //       return;
-  //     }
-
-  //     setLeft(open);
-  //   };
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -125,8 +117,12 @@ export default function PrimarySearchAppBar() {
       }}
       open={isMenuOpen}
       onClose={handleMenuClose}>
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem dense onClick={handleMenuClose}>
+        Profile
+      </MenuItem>
+      <MenuItem dense onClick={handleMenuClose}>
+        My account
+      </MenuItem>
     </Menu>
   );
 
@@ -147,18 +143,7 @@ export default function PrimarySearchAppBar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}>
       <MenuItem>
-        <IconButton size='large' aria-label='show 4 new mails' color='inherit'>
-          <Badge badgeContent={4} color='error'>
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton
-          size='large'
-          aria-label='show 17 new notifications'
-          color='inherit'>
+        <IconButton aria-label='show 17 new notifications' color='inherit'>
           <Badge badgeContent={17} color='error'>
             <NotificationsIcon />
           </Badge>
@@ -167,7 +152,6 @@ export default function PrimarySearchAppBar() {
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
-          size='large'
           aria-label='account of current user'
           aria-controls='primary-search-account-menu'
           aria-haspopup='true'
@@ -182,17 +166,18 @@ export default function PrimarySearchAppBar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Drawer open={left} toggleDrawer={toggleDrawer} />
-      <AppBar position='static'>
+      <AppBar position='fixed'>
         <Toolbar>
-          <IconButton
-            size='large'
-            edge='start'
-            color='inherit'
-            aria-label='open drawer'
-            onClick={() => toggleDrawer(true)}
-            sx={{ mr: 2 }}>
-            <MenuIcon />
-          </IconButton>
+          {loggedIn && (
+            <IconButton
+              edge='start'
+              color='inherit'
+              aria-label='open drawer'
+              onClick={(e) => toggleDrawer(true, e)}
+              sx={{ mr: 2 }}>
+              <MenuIcon />
+            </IconButton>
+          )}
           <Typography
             variant='h6'
             noWrap
@@ -200,47 +185,59 @@ export default function PrimarySearchAppBar() {
             sx={{ display: { xs: 'none', sm: 'block' } }}>
             Rent By Broker
           </Typography>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder='Search…'
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
+          {loggedIn && (
+            <Search>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder='Search…'
+                inputProps={{ 'aria-label': 'search' }}
+              />
+            </Search>
+          )}
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <IconButton
-              size='large'
-              aria-label='show 4 new mails'
-              color='inherit'>
-              <Badge badgeContent={4} color='error'>
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              size='large'
-              aria-label='show 17 new notifications'
-              color='inherit'>
-              <Badge badgeContent={17} color='error'>
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              size='large'
-              edge='end'
-              aria-label='account of current user'
-              aria-controls={menuId}
-              aria-haspopup='true'
-              onClick={handleProfileMenuOpen}
-              color='inherit'>
-              <AccountCircle />
-            </IconButton>
+            {loggedIn ? (
+              <>
+                <IconButton
+                  aria-label='show 17 new notifications'
+                  color='inherit'>
+                  <Badge badgeContent={17} color='error'>
+                    <NotificationsIcon />
+                  </Badge>
+                </IconButton>
+                <IconButton
+                  edge='end'
+                  aria-label='account of current user'
+                  aria-controls={menuId}
+                  aria-haspopup='true'
+                  onClick={handleProfileMenuOpen}
+                  color='inherit'>
+                  <Avatar
+                    alt='Remy Sharp'
+                    sx={{ width: 36, height: 36 }}
+                    src='/static/images/avatar/2.jpg'
+                  />
+                </IconButton>
+              </>
+            ) : (
+              <>
+                <Link
+                  to='/login'
+                  style={{ textDecoration: 'none', color: 'inherit' }}>
+                  <Button color='inherit'>Login</Button>
+                </Link>
+                <Link
+                  to='/register'
+                  style={{ textDecoration: 'none', color: 'inherit' }}>
+                  <Button color='inherit'>Register</Button>
+                </Link>
+              </>
+            )}
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <IconButton
-              size='large'
               aria-label='show more'
               aria-controls={mobileMenuId}
               aria-haspopup='true'

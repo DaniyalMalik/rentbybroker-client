@@ -7,10 +7,18 @@ import {
   TextField,
   Box,
   Typography,
+  ToggleButtonGroup,
+  ToggleButton,
 } from '@mui/material';
 import { Login as LoginIcon } from '@mui/icons-material';
 
 export default function Register() {
+  const [alignment, setAlignment] = React.useState('owner');
+
+  const handleChange = (event) => {
+    setAlignment(event.target.value);
+  };
+
   return (
     <Box
       sx={{
@@ -36,11 +44,24 @@ export default function Register() {
           <br />
           <TextField label='Last Name' variant='outlined' size='small' />
           <br />
+          <TextField label='#' variant='outlined' size='small' />
+          <br />
           <TextField label='@' variant='outlined' size='small' />
           <br />
           <TextField label='******' variant='outlined' size='small' />
           <br />
           <TextField label='Repeat Password' variant='outlined' size='small' />
+          <br />
+          <ToggleButtonGroup
+            color='primary'
+            value={alignment}
+            size='small'
+            exclusive
+            fullWidth
+            onChange={handleChange}>
+            <ToggleButton value='owner'>Owner</ToggleButton>
+            <ToggleButton value='broker'>Broker</ToggleButton>
+          </ToggleButtonGroup>
         </CardContent>
         <CardActions disableSpacing>
           <Button

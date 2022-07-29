@@ -14,13 +14,13 @@ import {
   MoveToInbox as InboxIcon,
 } from '@mui/icons-material';
 
-export default function Drawer(open, toggleDrawer) {
+export default function Drawer({ open, toggleDrawer }) {
   const list = () => (
     <Box
       sx={{ width: 250 }}
       role='presentation'
-      onClick={typeof toggleDrawer === 'function' && toggleDrawer(false)}
-      onKeyDown={typeof toggleDrawer === 'function' && toggleDrawer(false)}>
+      onClick={(e) => toggleDrawer(false, e)}
+      onKeyDown={(e) => toggleDrawer(false, e)}>
       <List>
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem key={text} disablePadding>
@@ -50,15 +50,12 @@ export default function Drawer(open, toggleDrawer) {
   );
 
   return (
-    <div>
-      {console.log(toggleDrawer, 'toggleDrawer')}
-      <SwipeableDrawer
-        anchor='left'
-        open={open}
-        onClose={typeof toggleDrawer === 'function' && toggleDrawer(false)}
-        onOpen={typeof toggleDrawer === 'function' && toggleDrawer(true)}>
-        {list()}
-      </SwipeableDrawer>
-    </div>
+    <SwipeableDrawer
+      anchor='left'
+      open={open}
+      onClose={(e) => toggleDrawer(false, e)}
+      onOpen={(e) => toggleDrawer(true, e)}>
+      {list()}
+    </SwipeableDrawer>
   );
 }
