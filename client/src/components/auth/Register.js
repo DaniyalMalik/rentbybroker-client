@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   Card,
   CardContent,
-  CardActions,
   Button,
   TextField,
   Box,
@@ -11,6 +10,7 @@ import {
   ToggleButton,
 } from '@mui/material';
 import { Login as LoginIcon } from '@mui/icons-material';
+import { Link } from 'react-router-dom';
 
 export default function Register() {
   const [alignment, setAlignment] = React.useState('owner');
@@ -22,8 +22,9 @@ export default function Register() {
   return (
     <Box
       sx={{
-        width: '100vw',
-        height: '100vh',
+        width: '100%',
+        height: '90vh',
+        marginTop: '100px',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -40,17 +41,32 @@ export default function Register() {
             Register
           </Typography>
           <br />
-          <TextField label='First Name' variant='outlined' size='small' />
+          <TextField
+            fullWidth
+            label='First Name'
+            variant='outlined'
+            size='small'
+          />
           <br />
-          <TextField label='Last Name' variant='outlined' size='small' />
+          <TextField
+            fullWidth
+            label='Last Name'
+            variant='outlined'
+            size='small'
+          />
           <br />
-          <TextField label='#' variant='outlined' size='small' />
+          <TextField fullWidth label='#' variant='outlined' size='small' />
           <br />
-          <TextField label='@' variant='outlined' size='small' />
+          <TextField fullWidth label='@' variant='outlined' size='small' />
           <br />
-          <TextField label='******' variant='outlined' size='small' />
+          <TextField fullWidth label='******' variant='outlined' size='small' />
           <br />
-          <TextField label='Repeat Password' variant='outlined' size='small' />
+          <TextField
+            fullWidth
+            label='Repeat Password'
+            variant='outlined'
+            size='small'
+          />
           <br />
           <ToggleButtonGroup
             color='primary'
@@ -62,16 +78,19 @@ export default function Register() {
             <ToggleButton value='owner'>Owner</ToggleButton>
             <ToggleButton value='broker'>Broker</ToggleButton>
           </ToggleButtonGroup>
-        </CardContent>
-        <CardActions disableSpacing>
+          <br />
+          <Box sx={{ alignSelf: 'flex-end' }}>
+            <Link to='/login'>Back to Login</Link>
+          </Box>
+          <br />
           <Button
             variant='contained'
             fullWidth
             size='small'
-            startIcon={<LoginIcon />}>
+            endIcon={<LoginIcon />}>
             Register
           </Button>
-        </CardActions>
+        </CardContent>
       </Card>
     </Box>
   );

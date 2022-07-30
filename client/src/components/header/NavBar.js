@@ -12,6 +12,8 @@ import {
   Typography,
   Avatar,
   Button,
+  FormControlLabel,
+  Switch,
 } from '@mui/material';
 import {
   More as MoreIcon,
@@ -20,8 +22,9 @@ import {
   Search as SearchIcon,
   AccountCircle,
 } from '@mui/icons-material';
-import Drawer from './Drawer';
 import { Link } from 'react-router-dom';
+
+import Drawer from './Drawer';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -67,7 +70,7 @@ export default function NavBar() {
   const [anchorEl, setAnchorEl] = React.useState(0);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(0);
   const [left, setLeft] = React.useState(false);
-  const [loggedIn, setLoggedIn] = React.useState(true);
+  const [loggedIn, setLoggedIn] = React.useState(false);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -167,7 +170,7 @@ export default function NavBar() {
     <Box sx={{ flexGrow: 1 }}>
       <Drawer open={left} toggleDrawer={toggleDrawer} />
       <AppBar position='fixed'>
-        <Toolbar>
+        <Toolbar sx={{ minHeight: '50px !important' }}>
           {loggedIn && (
             <IconButton
               edge='start'
@@ -198,6 +201,15 @@ export default function NavBar() {
           )}
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+            <FormControlLabel
+              control={
+                <Switch
+                  color='secondary'
+                  onClick={() => setLoggedIn((prev) => !prev)}
+                />
+              }
+              label='Logged In'
+            />
             {loggedIn ? (
               <>
                 <IconButton
@@ -207,19 +219,23 @@ export default function NavBar() {
                     <NotificationsIcon />
                   </Badge>
                 </IconButton>
-                <IconButton
-                  edge='end'
-                  aria-label='account of current user'
-                  aria-controls={menuId}
-                  aria-haspopup='true'
-                  onClick={handleProfileMenuOpen}
-                  color='inherit'>
-                  <Avatar
-                    alt='Remy Sharp'
-                    sx={{ width: 36, height: 36 }}
-                    src='/static/images/avatar/2.jpg'
-                  />
-                </IconButton>
+                <Link
+                  to='/dashboard/settings'
+                  style={{ textDecoration: 'none' }}>
+                  <IconButton
+                    edge='end'
+                    aria-label='account of current user'
+                    aria-controls={menuId}
+                    aria-haspopup='true'
+                    // onClick={handleProfileMenuOpen}
+                    color='inherit'>
+                    <Avatar
+                      alt='Remy Sharp'
+                      sx={{ width: 36, height: 36 }}
+                      src='/static/images/avatar/2.jpg'
+                    />
+                  </IconButton>
+                </Link>
               </>
             ) : (
               <>

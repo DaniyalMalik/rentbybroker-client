@@ -2,19 +2,19 @@ import * as React from 'react';
 import {
   Card,
   CardContent,
-  CardActions,
   Button,
   TextField,
   Box,
   Typography,
 } from '@mui/material';
 import { Send as SendIcon } from '@mui/icons-material';
+import { Link } from 'react-router-dom';
 
 export default function ResetPassword() {
   return (
     <Box
       sx={{
-        width: '100vw',
+        width: '100%',
         height: '90vh',
         display: 'flex',
         justifyContent: 'center',
@@ -32,17 +32,22 @@ export default function ResetPassword() {
             Reset Password
           </Typography>
           <br />
-          <TextField label='@' variant='outlined' size='small' />
-        </CardContent>
-        <CardActions disableSpacing>
+          <TextField label='@' fullWidth variant='outlined' size='small' />
+          <br />
+          <Box>
+            <Link style={{ alignSelf: 'flex-end' }} to='/login'>
+              Back to Login
+            </Link>
+          </Box>
+          <br />
           <Button
             variant='contained'
             fullWidth
             size='small'
-            startIcon={<SendIcon />}>
-            Reset
+            endIcon={<SendIcon />}>
+            Send
           </Button>
-        </CardActions>
+        </CardContent>
       </Card>
     </Box>
   );

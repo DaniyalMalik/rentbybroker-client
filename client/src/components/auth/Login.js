@@ -2,21 +2,22 @@ import * as React from 'react';
 import {
   Card,
   CardContent,
-  CardActions,
   Button,
   TextField,
   Box,
   Typography,
 } from '@mui/material';
 import { Login as LoginIcon } from '@mui/icons-material';
+import { Link } from 'react-router-dom';
 
 export default function Login() {
   return (
     <Box
       sx={{
-        width: '100vw',
+        width: '100%',
         height: '90vh',
         display: 'flex',
+        marginTop: '50px',
         justifyContent: 'center',
         alignItems: 'center',
       }}>
@@ -32,19 +33,22 @@ export default function Login() {
             Login
           </Typography>
           <br />
-          <TextField label='@' variant='outlined' size='small' />
+          <TextField label='@' fullWidth variant='outlined' size='small' />
           <br />
-          <TextField label='******' variant='outlined' size='small' />
-        </CardContent>
-        <CardActions disableSpacing>
+          <TextField label='******' fullWidth variant='outlined' size='small' />
+          <br />
+          <Box sx={{ alignSelf: 'flex-end' }}>
+            <Link to='/forgotpassword'>Forgot password?</Link>
+          </Box>
+          <br />
           <Button
             variant='contained'
             fullWidth
             size='small'
-            startIcon={<LoginIcon />}>
+            endIcon={<LoginIcon />}>
             Login
           </Button>
-        </CardActions>
+        </CardContent>
       </Card>
     </Box>
   );

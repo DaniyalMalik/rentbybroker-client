@@ -14,7 +14,7 @@ export default function ForgotPassword() {
   return (
     <Box
       sx={{
-        width: '100vw',
+        width: '100%',
         height: '90vh',
         display: 'flex',
         justifyContent: 'center',
@@ -32,11 +32,17 @@ export default function ForgotPassword() {
             Set New Password
           </Typography>
           <br />
-          <TextField label='******' variant='outlined' size='small' />
-          <br />
-          <TextField label='New Password' variant='outlined' size='small' />
+          <TextField fullWidth label='******' variant='outlined' size='small' />
           <br />
           <TextField
+            fullWidth
+            label='New Password'
+            variant='outlined'
+            size='small'
+          />
+          <br />
+          <TextField
+            fullWidth
             label='Repeat New Password'
             variant='outlined'
             size='small'
@@ -47,7 +53,7 @@ export default function ForgotPassword() {
             variant='contained'
             fullWidth
             size='small'
-            startIcon={<KeyIcon />}>
+            endIcon={<KeyIcon />}>
             Change
           </Button>
         </CardActions>
