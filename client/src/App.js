@@ -18,11 +18,11 @@ export default function App() {
           <Routes>
             <Route path='/' element={<NavBar />}>
               <Route path='/' element={<Dashboard />} />
-              <Route path='settings' element={<Settings />} />
+              <Route path='register' element={<Register />} />
+              <Route path='login' element={<Login />} />
               <Route path='forgotpassword' element={<ForgotPassword />} />
               <Route path='resetpassword' element={<ResetPassword />} />
-              <Route path='login' element={<Login />} />
-              <Route path='register' element={<Register />} />
+              <Route path='settings' element={<Settings />} />
             </Route>
             <Route path='/test' element={<Test />} />
             <Route path='*' element={<NotFound />} />

@@ -22,7 +22,7 @@ import {
   Search as SearchIcon,
   AccountCircle,
 } from '@mui/icons-material';
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 
 import Drawer from './Drawer';
 
@@ -187,7 +187,7 @@ export default function NavBar() {
               noWrap
               component='div'
               sx={{ display: { xs: 'none', sm: 'block' } }}>
-              Rent By Broker
+              RentByBroker
             </Typography>
           </Link>
           {loggedIn && (
@@ -267,6 +267,7 @@ export default function NavBar() {
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
+      <Outlet />
     </Box>
   );
 }
