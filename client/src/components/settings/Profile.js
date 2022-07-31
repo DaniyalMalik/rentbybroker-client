@@ -1,87 +1,104 @@
 import * as React from 'react';
 import {
-  Card,
-  CardContent,
+  Checkbox,
   Button,
   TextField,
   Box,
-  Typography,
-  ToggleButtonGroup,
-  ToggleButton,
+  FormControlLabel,
+  FormGroup,
+  FormLabel,
 } from '@mui/material';
-import { Login as LoginIcon } from '@mui/icons-material';
-import { Link } from 'react-router-dom';
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/material.css';
+import { Update as UpdateIcon } from '@mui/icons-material';
 
 export default function Profile() {
-  const [alignment, setAlignment] = React.useState('owner');
-
-  const handleChange = (event) => {
-    setAlignment(event.target.value);
-  };
+  const [value, setValue] = React.useState();
 
   return (
     <Box
       sx={{
         width: '100%',
-        height: '90vh',
-        marginTop: '100px',
+        height: '100%',
         display: 'flex',
         justifyContent: 'center',
+        flexDirection: 'column',
         alignItems: 'center',
       }}>
-      {/* <Card sx={{ maxWidth: 345, padding: '50px' }}>
-        <CardContent
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            flexDirection: 'column',
-          }}> */}
-      <Typography variant='h3' color='primary'>
-        Register
-      </Typography>
-      <br />
       <TextField fullWidth label='First Name' variant='outlined' size='small' />
       <br />
       <TextField fullWidth label='Last Name' variant='outlined' size='small' />
       <br />
-      <TextField fullWidth label='#' variant='outlined' size='small' />
-      <br />
-      <TextField fullWidth label='@' variant='outlined' size='small' />
-      <br />
-      <TextField fullWidth label='******' variant='outlined' size='small' />
+      <PhoneInput
+        country={'Pakistan'}
+        inputProps={{
+          required: true,
+          style: { width: '100%', height: '40px' },
+        }}
+        value={value}
+        onChange={(value) => setValue(value)}
+      />
       <br />
       <TextField
         fullWidth
-        label='Repeat Password'
+        label='Company Name'
         variant='outlined'
         size='small'
       />
       <br />
-      <ToggleButtonGroup
-        color='primary'
-        value={alignment}
-        size='small'
-        exclusive
+      <TextField
         fullWidth
-        onChange={handleChange}>
-        <ToggleButton value='owner'>Owner</ToggleButton>
-        <ToggleButton value='broker'>Broker</ToggleButton>
-      </ToggleButtonGroup>
+        type='file'
+        helperText='Upload Profile Picture'
+        variant='outlined'
+        size='small'
+      />
       <br />
-      <Box sx={{ alignSelf: 'flex-end' }}>
-        <Link to='/login'>Back to Login</Link>
-      </Box>
+      <TextField fullWidth label='Website' variant='outlined' size='small' />
+      <br />
+      <TextField
+        fullWidth
+        type='number'
+        label='Fleet Size'
+        variant='outlined'
+        size='small'
+      />
+      <br />
+      <FormGroup>
+        <FormLabel component='legend'>Fleets</FormLabel>
+        <FormControlLabel
+          control={<Checkbox defaultChecked />}
+          label='Yachts'
+        />
+        <FormControlLabel
+          disabled
+          control={<Checkbox disabled />}
+          label='Cars'
+        />
+        <FormControlLabel
+          disabled
+          control={<Checkbox disabled />}
+          label='Homes/Villas'
+        />
+        <FormControlLabel
+          disabled
+          control={<Checkbox disabled />}
+          label='Helicopters'
+        />
+        <FormControlLabel
+          disabled
+          control={<Checkbox disabled />}
+          label='Airplanes'
+        />
+      </FormGroup>
       <br />
       <Button
         variant='contained'
         fullWidth
         size='small'
-        endIcon={<LoginIcon />}>
-        Register
+        endIcon={<UpdateIcon />}>
+        Update Profile
       </Button>
-      {/* </CardContent>
-      </Card> */}
     </Box>
   );
 }

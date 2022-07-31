@@ -7,12 +7,13 @@ import {
   ListItem,
   SwipeableDrawer,
   List,
-  Divider,
+  // Divider,
 } from '@mui/material';
 import {
-  Mail as MailIcon,
-  MoveToInbox as InboxIcon,
+  Settings as SettingsIcon,
+  Home as HomeIcon,
 } from '@mui/icons-material';
+import { Link } from 'react-router-dom';
 
 export default function Drawer({ open, toggleDrawer }) {
   const list = () => (
@@ -22,18 +23,30 @@ export default function Drawer({ open, toggleDrawer }) {
       onClick={(e) => toggleDrawer(false, e)}
       onKeyDown={(e) => toggleDrawer(false, e)}>
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem key={text} disablePadding>
+        <Link to='/' style={{ textDecoration: 'none', color: 'inherit' }}>
+          <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                <HomeIcon color='primary' />
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={'Home'} />
             </ListItemButton>
           </ListItem>
-        ))}
+        </Link>
+        <Link
+          to='/settings'
+          style={{ textDecoration: 'none', color: 'inherit' }}>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <SettingsIcon color='primary' />
+              </ListItemIcon>
+              <ListItemText primary={'Settings'} />
+            </ListItemButton>
+          </ListItem>
+        </Link>
       </List>
-      <Divider />
+      {/* <Divider />
       <List>
         {['All mail', 'Trash', 'Spam'].map((text, index) => (
           <ListItem key={text} disablePadding>
@@ -45,7 +58,7 @@ export default function Drawer({ open, toggleDrawer }) {
             </ListItemButton>
           </ListItem>
         ))}
-      </List>
+      </List> */}
     </Box>
   );
 

@@ -38,7 +38,7 @@ export default function Login() {
           <TextField label='******' fullWidth variant='outlined' size='small' />
           <br />
           <Box sx={{ alignSelf: 'flex-end' }}>
-            <Link to='/forgotpassword'>Forgot password?</Link>
+            <Link to='/resetpassword'>Forgot password?</Link>
           </Box>
           <br />
           <Button

@@ -181,13 +181,15 @@ export default function NavBar() {
               <MenuIcon />
             </IconButton>
           )}
-          <Typography
-            variant='h6'
-            noWrap
-            component='div'
-            sx={{ display: { xs: 'none', sm: 'block' } }}>
-            Rent By Broker
-          </Typography>
+          <Link to='/' style={{ textDecoration: 'none', color: 'inherit' }}>
+            <Typography
+              variant='h6'
+              noWrap
+              component='div'
+              sx={{ display: { xs: 'none', sm: 'block' } }}>
+              Rent By Broker
+            </Typography>
+          </Link>
           {loggedIn && (
             <Search>
               <SearchIconWrapper>
@@ -205,6 +207,7 @@ export default function NavBar() {
               control={
                 <Switch
                   color='secondary'
+                  checked={loggedIn}
                   onClick={() => setLoggedIn((prev) => !prev)}
                 />
               }
@@ -215,13 +218,11 @@ export default function NavBar() {
                 <IconButton
                   aria-label='show 17 new notifications'
                   color='inherit'>
-                  <Badge badgeContent={17} color='error'>
+                  <Badge badgeContent={10} max={9} color='error'>
                     <NotificationsIcon />
                   </Badge>
                 </IconButton>
-                <Link
-                  to='/dashboard/settings'
-                  style={{ textDecoration: 'none' }}>
+                <Link to='/settings' style={{ textDecoration: 'none' }}>
                   <IconButton
                     edge='end'
                     aria-label='account of current user'
