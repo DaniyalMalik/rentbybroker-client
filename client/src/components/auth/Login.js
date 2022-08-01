@@ -32,11 +32,20 @@ export default function Login() {
           <Typography variant='h3' color='primary'>
             Login
           </Typography>
-          <br />
-          <TextField label='@' fullWidth variant='outlined' size='small' />
-          <br />
-          <TextField label='******' fullWidth variant='outlined' size='small' />
-          <br />
+          <TextField
+            margin='normal'
+            label='@'
+            fullWidth
+            variant='outlined'
+            size='small'
+          />
+          <TextField
+            margin='normal'
+            label='******'
+            fullWidth
+            variant='outlined'
+            size='small'
+          />
           <Box sx={{ alignSelf: 'flex-end' }}>
             <Link to='/resetpassword'>Forgot password?</Link>
           </Box>

@@ -12,6 +12,8 @@ import {
 import {
   Settings as SettingsIcon,
   Home as HomeIcon,
+  ContactPage as ContactPageIcon,
+  AddBox as AddBoxIcon,
 } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 
@@ -34,6 +36,18 @@ export default function Drawer({ open, toggleDrawer }) {
           </ListItem>
         </Link>
         <Link
+          to='/addasset'
+          style={{ textDecoration: 'none', color: 'inherit' }}>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <AddBoxIcon color='primary' />
+              </ListItemIcon>
+              <ListItemText primary={'List An Asset'} />
+            </ListItemButton>
+          </ListItem>
+        </Link>
+        <Link
           to='/settings'
           style={{ textDecoration: 'none', color: 'inherit' }}>
           <ListItem disablePadding>
@@ -42,6 +56,18 @@ export default function Drawer({ open, toggleDrawer }) {
                 <SettingsIcon color='primary' />
               </ListItemIcon>
               <ListItemText primary={'Settings'} />
+            </ListItemButton>
+          </ListItem>
+        </Link>
+        <Link
+          to='/contact'
+          style={{ textDecoration: 'none', color: 'inherit' }}>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <ContactPageIcon color='primary' />
+              </ListItemIcon>
+              <ListItemText primary={'Contact Us'} />
             </ListItemButton>
           </ListItem>
         </Link>

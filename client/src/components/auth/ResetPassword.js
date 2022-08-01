@@ -31,9 +31,13 @@ export default function ResetPassword() {
           <Typography variant='h3' color='primary'>
             Reset Password
           </Typography>
-          <br />
-          <TextField label='@' fullWidth variant='outlined' size='small' />
-          <br />
+          <TextField
+            margin='normal'
+            label='@'
+            fullWidth
+            variant='outlined'
+            size='small'
+          />
           <Box>
             <Link style={{ alignSelf: 'flex-end' }} to='/login'>
               Back to Login

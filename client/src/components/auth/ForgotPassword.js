@@ -31,17 +31,22 @@ export default function ForgotPassword() {
           <Typography variant='h3' color='primary'>
             Set New Password
           </Typography>
-          <br />
-          <TextField fullWidth label='******' variant='outlined' size='small' />
-          <br />
           <TextField
+            margin='normal'
+            fullWidth
+            label='******'
+            variant='outlined'
+            size='small'
+          />
+          <TextField
+            margin='normal'
             fullWidth
             label='New Password'
             variant='outlined'
             size='small'
           />
-          <br />
           <TextField
+            margin='normal'
             fullWidth
             label='Repeat New Password'
             variant='outlined'

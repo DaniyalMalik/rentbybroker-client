@@ -1,6 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { Tabs, Tab, Typography, Box } from '@mui/material';
+import { Tabs, Tab, Box } from '@mui/material';
 import Profile from './Profile';
 import ChangePassword from '../auth/ChangePassword';
 
@@ -16,7 +16,8 @@ function TabPanel(props) {
       {...other}>
       {value === index && (
         <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+          <>{children}</>
+          {/* removed typography tags from above! */}
         </Box>
       )}
     </div>

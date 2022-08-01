@@ -40,34 +40,48 @@ export default function Register() {
           <Typography variant='h3' color='primary'>
             Register
           </Typography>
-          <br />
           <TextField
+            margin='normal'
             fullWidth
             label='First Name'
             variant='outlined'
             size='small'
           />
-          <br />
           <TextField
+            margin='normal'
             fullWidth
             label='Last Name'
             variant='outlined'
             size='small'
           />
-          <br />
-          <TextField fullWidth label='#' variant='outlined' size='small' />
-          <br />
-          <TextField fullWidth label='@' variant='outlined' size='small' />
-          <br />
-          <TextField fullWidth label='******' variant='outlined' size='small' />
-          <br />
           <TextField
+            margin='normal'
+            fullWidth
+            label='#'
+            variant='outlined'
+            size='small'
+          />
+          <TextField
+            margin='normal'
+            fullWidth
+            label='@'
+            variant='outlined'
+            size='small'
+          />
+          <TextField
+            margin='normal'
+            fullWidth
+            label='******'
+            variant='outlined'
+            size='small'
+          />
+          <TextField
+            margin='normal'
             fullWidth
             label='Repeat Password'
             variant='outlined'
             size='small'
           />
-          <br />
           <ToggleButtonGroup
             color='primary'
             value={alignment}

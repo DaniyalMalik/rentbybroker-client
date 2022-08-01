@@ -13,22 +13,27 @@ export default function ChangePassword() {
         flexDirection: 'column',
         alignItems: 'center',
       }}>
-      <TextField fullWidth label='******' variant='outlined' size='small' />
-      <br />
       <TextField
+        margin='normal'
+        fullWidth
+        label='******'
+        variant='outlined'
+        size='small'
+      />
+      <TextField
+        margin='normal'
         fullWidth
         label='New Password'
         variant='outlined'
         size='small'
       />
-      <br />
       <TextField
+        margin='normal'
         fullWidth
         label='Repeat New Password'
         variant='outlined'
         size='small'
       />
-      <br />
       <Button variant='contained' fullWidth size='small' endIcon={<KeyIcon />}>
         Change
       </Button>

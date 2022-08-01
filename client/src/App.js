@@ -6,8 +6,10 @@ import Register from './components/auth/Register';
 import NavBar from './components/header/NavBar';
 import Dashboard from './components/home/Dashboard';
 import Settings from './components/settings/Settings';
-import NotFound from './components/NotFound';
+import NotFound from './components/pages/NotFound';
 import Test from './components/test/Test';
+import Contact from './components/pages/Contact';
+import Index from './components/addasset/Index';
 import { Box } from '@mui/material';
 
 export default function App() {
@@ -22,7 +24,9 @@ export default function App() {
               <Route path='login' element={<Login />} />
               <Route path='forgotpassword' element={<ForgotPassword />} />
               <Route path='resetpassword' element={<ResetPassword />} />
+              <Route path='addasset' element={<Index />} />
               <Route path='settings' element={<Settings />} />
+              <Route path='contact' element={<Contact />} />
             </Route>
             <Route path='/test' element={<Test />} />
             <Route path='*' element={<NotFound />} />

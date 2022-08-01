@@ -40,10 +40,20 @@ export default function Profile() {
         flexDirection: 'column',
         alignItems: 'center',
       }}>
-      <TextField fullWidth label='First Name' variant='outlined' size='small' />
-      <br />
-      <TextField fullWidth label='Last Name' variant='outlined' size='small' />
-      <br />
+      <TextField
+        margin='normal'
+        fullWidth
+        label='First Name'
+        variant='outlined'
+        size='small'
+      />
+      <TextField
+        margin='normal'
+        fullWidth
+        label='Last Name'
+        variant='outlined'
+        size='small'
+      />
       <PhoneInput
         country={'Pakistan'}
         inputProps={{
@@ -53,32 +63,36 @@ export default function Profile() {
         value={value}
         onChange={(value) => setValue(value)}
       />
-      <br />
       <TextField
+        margin='normal'
         fullWidth
         label='Company Name'
         variant='outlined'
         size='small'
       />
-      <br />
       <TextField
+        margin='normal'
         fullWidth
         type='file'
         helperText='Upload Profile Picture'
         variant='outlined'
         size='small'
       />
-      <br />
-      <TextField fullWidth label='Website' variant='outlined' size='small' />
-      <br />
       <TextField
+        margin='normal'
+        fullWidth
+        label='Website'
+        variant='outlined'
+        size='small'
+      />
+      <TextField
+        margin='normal'
         fullWidth
         type='number'
         label='Fleet Size'
         variant='outlined'
         size='small'
       />
-      <br />
       <FormGroup>
         <FormLabel component='legend'>Fleets</FormLabel>
         <FormControlLabel
