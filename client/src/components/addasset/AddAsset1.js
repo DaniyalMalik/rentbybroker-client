@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, TextField, Box, Typography } from '@mui/material';
+import { Button, TextField, Box } from '@mui/material';
 import { Send as SendIcon } from '@mui/icons-material';
 
 export default function AddAsset1() {
@@ -7,47 +7,86 @@ export default function AddAsset1() {
     <Box
       sx={{
         width: '100%',
-        height: '90vh',
+        // height: '90vh',
         marginTop: '50px',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'column',
       }}>
-      <Typography variant='h3' color='primary'>
-        List An Asset
-      </Typography>
+      <TextField
+        label='Make'
+        fullWidth
+        sx={{ maxWidth: '80%' }}
+        margin='normal'
+        variant='outlined'
+        size='small'
+      />
+      <TextField
+        label='Model'
+        fullWidth
+        sx={{ maxWidth: '80%' }}
+        type='number'
+        margin='normal'
+        variant='outlined'
+        size='small'
+      />
+      <TextField
+        label='Length'
+        fullWidth
+        sx={{ maxWidth: '80%' }}
+        type='number'
+        margin='normal'
+        variant='outlined'
+        size='small'
+      />
+      <TextField
+        label='Year'
+        type='number'
+        margin='normal'
+        sx={{ maxWidth: '80%' }}
+        fullWidth
+        variant='outlined'
+        size='small'
+      />
       <TextField
         label='Name'
-        fullWidth
-        sx={{ maxWidth: '80%' }}
         margin='normal'
+        sx={{ maxWidth: '80%' }}
+        fullWidth
         variant='outlined'
         size='small'
       />
       <TextField
-        label='@'
-        fullWidth
-        sx={{ maxWidth: '80%' }}
+        label='Major Cities'
         margin='normal'
+        sx={{ maxWidth: '80%' }}
+        fullWidth
         variant='outlined'
         size='small'
       />
       <TextField
-        label='Subject'
-        fullWidth
-        sx={{ maxWidth: '80%' }}
+        label='Pick Up Point'
         margin='normal'
+        sx={{ maxWidth: '80%' }}
+        fullWidth
         variant='outlined'
         size='small'
       />
       <TextField
-        label='Message'
+        label='Drop Off Point'
         margin='normal'
         sx={{ maxWidth: '80%' }}
         fullWidth
-        minRows={5}
-        multiline
+        variant='outlined'
+        size='small'
+      />
+      <TextField
+        label='Booking Number'
+        margin='normal'
+        type='number'
+        sx={{ maxWidth: '80%' }}
+        fullWidth
         variant='outlined'
         size='small'
       />

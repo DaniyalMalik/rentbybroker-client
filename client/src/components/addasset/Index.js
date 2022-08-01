@@ -7,20 +7,23 @@ import {
   Step,
   StepLabel,
   StepConnector,
-  Button,
+  Typography,
+  Fab,
 } from '@mui/material';
 import { stepConnectorClasses } from '@mui/material/StepConnector';
 import {
   ArrowBackIos as ArrowBackIosIcon,
   ArrowForwardIos as ArrowForwardIosIcon,
-  Settings as SettingsIcon,
-  GroupAdd as GroupAddIcon,
-  VideoLabel as VideoLabelIcon,
   Check as CheckIcon,
+  Filter1 as Filter1Icon,
+  Filter2 as Filter2Icon,
+  Filter3 as Filter3Icon,
+  Filter4 as Filter4Icon,
 } from '@mui/icons-material';
 import AddAsset1 from './AddAsset1';
 import AddAsset2 from './AddAsset2';
 import AddAsset3 from './AddAsset3';
+import AddAsset4 from './AddAsset4';
 
 const QontoStepIconRoot = styled('div')(({ theme, ownerState }) => ({
   color: theme.palette.mode === 'dark' ? theme.palette.grey[700] : '#eaeaf0',
@@ -122,9 +125,10 @@ function ColorlibStepIcon(props) {
   const { active, completed, className } = props;
 
   const icons = {
-    1: <SettingsIcon />,
-    2: <GroupAddIcon />,
-    3: <VideoLabelIcon />,
+    1: <Filter1Icon />,
+    2: <Filter2Icon />,
+    3: <Filter3Icon />,
+    4: <Filter4Icon />,
   };
 
   return (
@@ -154,7 +158,12 @@ ColorlibStepIcon.propTypes = {
   icon: PropTypes.node,
 };
 
-const steps = ['Asset Details-1', 'Asset Details-2', 'Asset Details-3'];
+const steps = [
+  'Asset Details-1',
+  'Asset Details-2',
+  'Asset Details-3',
+  'Asset Details-4',
+];
 
 export default function Index() {
   const [order, setOrder] = React.useState(0);
@@ -169,6 +178,10 @@ export default function Index() {
 
   return (
     <>
+      <Typography variant='h3' color='primary' sx={{ textAlign: 'center' }}>
+        List An Asset
+      </Typography>
+      <br />
       <Stack sx={{ width: '100%' }} spacing={4}>
         <Stepper
           alternativeLabel
@@ -187,29 +200,31 @@ export default function Index() {
         <AddAsset1 />
       ) : order === 1 ? (
         <AddAsset2 />
-      ) : (
+      ) : order === 2 ? (
         <AddAsset3 />
+      ) : (
+        <AddAsset4 />
       )}
-      <Button
+      <br />
+      <br />
+      <Fab
         size='small'
-        sx={{ float: 'left' }}
         onClick={handlePrevious}
-        variant='contained'
         disabled={order === 0}
-        startIcon={<ArrowBackIosIcon />}
-        color='primary'>
-        Previous
-      </Button>
-      <Button
-        disabled={order === 2}
+        color='primary'
+        sx={{ float: 'left', margin: '10px' }}
+        aria-label='edit'>
+        <ArrowBackIosIcon />
+      </Fab>
+      <Fab
+        sx={{ float: 'right', margin: '10px' }}
+        disabled={order === 3}
+        color='primary'
         onClick={handleNext}
         size='small'
-        sx={{ float: 'right' }}
-        variant='contained'
-        endIcon={<ArrowForwardIosIcon />}
-        color='primary'>
-        Next
-      </Button>
+        aria-label='edit'>
+        <ArrowForwardIosIcon />
+      </Fab>
     </>
   );
 }
