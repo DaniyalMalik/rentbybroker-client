@@ -12,7 +12,7 @@ import {
   Button,
   TextField,
 } from '@mui/material';
-import { Send as SendIcon, Add as AddIcon } from '@mui/icons-material';
+import { SaveAlt as SaveAltIcon, Add as AddIcon } from '@mui/icons-material';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -126,6 +126,7 @@ export default function AddAsset2() {
           id='demo-simple-select'
           value={fuelType}
           label='Fuel Type'
+          size='small'
           onChange={handleChange}>
           <MenuItem value='Gas'>Gas</MenuItem>
           <MenuItem value='Diesel'>Diesel</MenuItem>
@@ -301,8 +302,8 @@ export default function AddAsset2() {
         sx={{ maxWidth: '80%' }}
         fullWidth
         size='small'
-        endIcon={<SendIcon />}>
-        Send
+        endIcon={<SaveAltIcon />}>
+        Save
       </Button>
     </Box>
   );

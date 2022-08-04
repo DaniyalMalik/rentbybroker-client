@@ -15,12 +15,12 @@ import {
   FormControl,
 } from '@mui/material';
 import {
-  Send as SendIcon,
   Add as AddIcon,
   Remove as RemoveIcon,
   Update as UpdateIcon,
   Upload as UploadIcon,
   Close as CloseIcon,
+  SaveAlt as SaveAltIcon,
 } from '@mui/icons-material';
 import ImageUploading from 'react-images-uploading';
 
@@ -31,6 +31,8 @@ export default function AddAsset3() {
   const [hourLimit, setHourLimit] = React.useState(12);
   const [diffPricing, setDiffPricing] = React.useState(false);
   const [inclPricing, setInclPricing] = React.useState(true);
+  const [termRate, setTermRate] = React.useState(false);
+  const [numberOfWholeSaleDays, setNumberOfWholeSaleDays] = React.useState(0);
   const [capInfo, setCapInfo] = React.useState([
     <>
       <Typography variant='h6' color='primary'>
@@ -358,14 +360,138 @@ export default function AddAsset3() {
         <FormControlLabel control={<Checkbox />} label='Friday' />
         <FormControlLabel control={<Checkbox />} label='Saturday' />
       </FormGroup>
-      <TextField
-        label='pricing (pricing type, rate in city, rate of different days)'
-        margin='normal'
-        sx={{ maxWidth: '80%' }}
-        fullWidth
-        variant='outlined'
-        size='small'
+      <FormControlLabel
+        control={<Checkbox checked={termRate} />}
+        onClick={() => setTermRate((prev) => !prev)}
+        label='Do you offer term charters or only hourly?'
       />
+      <br />
+      <FormControlLabel
+        control={<Checkbox checked={diffPricing} />}
+        onClick={() => setDiffPricing((prev) => !prev)}
+        label='Do you have different pricing each day or is it the same?'
+      />
+      <br />
+      {diffPricing && (
+        <>
+          <Typography variant='h6' color='primary'>
+            Price for each day
+          </Typography>
+          <TextField
+            label='Sunday'
+            margin='normal'
+            type='number'
+            sx={{ maxWidth: '80%' }}
+            fullWidth
+            variant='outlined'
+            size='small'
+          />
+          <TextField
+            label='Monday'
+            margin='normal'
+            type='number'
+            sx={{ maxWidth: '80%' }}
+            fullWidth
+            variant='outlined'
+            size='small'
+          />
+          <TextField
+            label='Tuesday'
+            margin='normal'
+            type='number'
+            sx={{ maxWidth: '80%' }}
+            fullWidth
+            variant='outlined'
+            size='small'
+          />
+          <TextField
+            label='Wednesday'
+            margin='normal'
+            type='number'
+            sx={{ maxWidth: '80%' }}
+            fullWidth
+            variant='outlined'
+            size='small'
+          />
+          <TextField
+            label='Thursday'
+            margin='normal'
+            type='number'
+            sx={{ maxWidth: '80%' }}
+            fullWidth
+            variant='outlined'
+            size='small'
+          />
+          <TextField
+            label='Friday'
+            margin='normal'
+            type='number'
+            sx={{ maxWidth: '80%' }}
+            fullWidth
+            variant='outlined'
+            size='small'
+          />
+          <TextField
+            label='Saturday'
+            margin='normal'
+            type='number'
+            sx={{ maxWidth: '80%' }}
+            fullWidth
+            variant='outlined'
+            size='small'
+          />
+        </>
+      )}
+      <br />
+      <FormControl sx={{ maxWidth: '80%' }} fullWidth>
+        <InputLabel id='demo-simple-select-label'>
+          Minimum Booking Hour Limit
+        </InputLabel>
+        <Select
+          labelId='demo-simple-select-label'
+          id='demo-simple-select'
+          size='small'
+          value={hourLimit}
+          label='Minimum Booking Hour Limit'
+          onChange={(e) => setHourLimit(e.target.value)}>
+          <MenuItem key={1} value={1}>
+            1
+          </MenuItem>
+          <MenuItem key={2} value={2}>
+            2
+          </MenuItem>
+          <MenuItem key={3} value={3}>
+            3
+          </MenuItem>
+          <MenuItem key={4} value={4}>
+            4
+          </MenuItem>
+          <MenuItem key={5} value={5}>
+            5
+          </MenuItem>
+          <MenuItem key={6} value={6}>
+            6
+          </MenuItem>
+          <MenuItem key={7} value={7}>
+            7
+          </MenuItem>
+          <MenuItem key={8} value={8}>
+            8
+          </MenuItem>
+          <MenuItem key={9} value={9}>
+            9
+          </MenuItem>
+          <MenuItem key={10} value={10}>
+            10
+          </MenuItem>
+          <MenuItem key={11} value={11}>
+            11
+          </MenuItem>
+          <MenuItem key={12} value={12}>
+            12
+          </MenuItem>
+        </Select>
+      </FormControl>
       <TextField
         label='Marina Pick-Up Fees'
         margin='normal'
@@ -457,149 +583,64 @@ export default function AddAsset3() {
         />
         {!inclPricing && crewMembers}
       </Box>
-      <FormControlLabel
-        control={<Checkbox checked={diffPricing} />}
-        onClick={() => setDiffPricing((prev) => !prev)}
-        label='Do you have different pricing each day or is it the same?'
-      />
       <br />
-      {diffPricing && (
+      {termRate && (
         <>
           <Typography variant='h6' color='primary'>
-            Price for each day
+            Wholesale Term rate
           </Typography>
-          <TextField
-            label='Sunday'
-            margin='normal'
-            type='number'
-            sx={{ maxWidth: '80%' }}
-            fullWidth
-            variant='outlined'
-            size='small'
-          />
-          <TextField
-            label='Monday'
-            margin='normal'
-            type='number'
-            sx={{ maxWidth: '80%' }}
-            fullWidth
-            variant='outlined'
-            size='small'
-          />
-          <TextField
-            label='Tuesday'
-            margin='normal'
-            type='number'
-            sx={{ maxWidth: '80%' }}
-            fullWidth
-            variant='outlined'
-            size='small'
-          />
-          <TextField
-            label='Wednesday'
-            margin='normal'
-            type='number'
-            sx={{ maxWidth: '80%' }}
-            fullWidth
-            variant='outlined'
-            size='small'
-          />
-          <TextField
-            label='Thursday'
-            margin='normal'
-            type='number'
-            sx={{ maxWidth: '80%' }}
-            fullWidth
-            variant='outlined'
-            size='small'
-          />
-          <TextField
-            label='Friday'
-            margin='normal'
-            type='number'
-            sx={{ maxWidth: '80%' }}
-            fullWidth
-            variant='outlined'
-            size='small'
-          />
-          <TextField
-            label='Saturday'
-            margin='normal'
-            type='number'
-            sx={{ maxWidth: '80%' }}
-            fullWidth
-            variant='outlined'
-            size='small'
-          />
+          <Box
+            sx={{
+              border: '2px solid #1976d2',
+              width: '75%',
+              borderRadius: '8px',
+              padding: '20px',
+            }}>
+            <FormControl sx={{ maxWidth: '80%' }} fullWidth>
+              <InputLabel id='demo-simple-select-label'>Days</InputLabel>
+              <Select
+                labelId='demo-simple-select-label'
+                id='demo-simple-select'
+                size='small'
+                value={numberOfWholeSaleDays}
+                label='Days'
+                onChange={(e) => setNumberOfWholeSaleDays(e.target.value)}>
+                <MenuItem key={1} value={1}>
+                  1
+                </MenuItem>
+                <MenuItem key={2} value={2}>
+                  2
+                </MenuItem>
+                <MenuItem key={3} value={3}>
+                  3
+                </MenuItem>
+                <MenuItem key={4} value={4}>
+                  4
+                </MenuItem>
+                <MenuItem key={5} value={5}>
+                  5
+                </MenuItem>
+                <MenuItem key={6} value={6}>
+                  6
+                </MenuItem>
+                <MenuItem key={7} value={7}>
+                  7
+                </MenuItem>
+              </Select>
+            </FormControl>
+            <TextField
+              label='Amount'
+              margin='normal'
+              sx={{ maxWidth: '80%' }}
+              name='wholeSaleRate'
+              fullWidth
+              type='number'
+              variant='outlined'
+              size='small'
+            />
+          </Box>
         </>
       )}
-      <br />
-      <FormControl sx={{ maxWidth: '80%' }} fullWidth>
-        <InputLabel id='demo-simple-select-label'>
-          Minimum Booking Hour Limit
-        </InputLabel>
-        <Select
-          labelId='demo-simple-select-label'
-          id='demo-simple-select'
-          value={hourLimit}
-          label='Minimum Booking Hour Limit'
-          onChange={(e) => setHourLimit(e.target.value)}>
-          <MenuItem key={1} value={1}>
-            1
-          </MenuItem>
-          <MenuItem key={2} value={2}>
-            2
-          </MenuItem>
-          <MenuItem key={3} value={3}>
-            3
-          </MenuItem>
-          <MenuItem key={4} value={4}>
-            4
-          </MenuItem>
-          <MenuItem key={5} value={5}>
-            5
-          </MenuItem>
-          <MenuItem key={6} value={6}>
-            6
-          </MenuItem>
-          <MenuItem key={7} value={7}>
-            7
-          </MenuItem>
-          <MenuItem key={8} value={8}>
-            8
-          </MenuItem>
-          <MenuItem key={9} value={9}>
-            9
-          </MenuItem>
-          <MenuItem key={10} value={10}>
-            10
-          </MenuItem>
-          <MenuItem key={11} value={11}>
-            11
-          </MenuItem>
-          <MenuItem key={12} value={12}>
-            12
-          </MenuItem>
-        </Select>
-      </FormControl>
-      <TextField
-        label='crew members'
-        margin='normal'
-        type='number'
-        sx={{ maxWidth: '80%' }}
-        fullWidth
-        variant='outlined'
-        size='small'
-      />
-      <TextField
-        label='Fees'
-        margin='normal'
-        type='number'
-        sx={{ maxWidth: '80%' }}
-        fullWidth
-        variant='outlined'
-        size='small'
-      />
       <Box
         sx={{
           display: 'flex',
@@ -643,8 +684,8 @@ export default function AddAsset3() {
         sx={{ maxWidth: '80%' }}
         fullWidth
         size='small'
-        endIcon={<SendIcon />}>
-        Send
+        endIcon={<SaveAltIcon />}>
+        Save
       </Button>
     </Box>
   );

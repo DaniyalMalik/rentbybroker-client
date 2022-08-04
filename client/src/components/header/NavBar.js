@@ -181,7 +181,9 @@ export default function NavBar() {
               <MenuIcon />
             </IconButton>
           )}
-          <Link to='/' style={{ textDecoration: 'none', color: 'inherit' }}>
+          <Link
+            to={loggedIn ? '/' : '/login'}
+            style={{ textDecoration: 'none', color: 'inherit' }}>
             <Typography
               variant='h6'
               noWrap

@@ -1,8 +1,18 @@
 import * as React from 'react';
-import { Button, TextField, Box } from '@mui/material';
-import { Send as SendIcon } from '@mui/icons-material';
+import {
+  Button,
+  TextField,
+  Box,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+} from '@mui/material';
+import { SaveAlt as SaveAltIcon } from '@mui/icons-material';
 
 export default function AddAsset1() {
+  const [boatType, setBoatType] = React.useState('Power');
+
   return (
     <Box
       sx={{
@@ -31,6 +41,23 @@ export default function AddAsset1() {
         variant='outlined'
         size='small'
       />
+      <FormControl sx={{ marginTop: 1, maxWidth: '80%' }} fullWidth>
+        <InputLabel id='demo-simple-select-label'>Type</InputLabel>
+        <Select
+          labelId='demo-simple-select-label'
+          id='demo-simple-select'
+          value={boatType}
+          label='Type'
+          size='small'
+          onChange={(e) => setBoatType(e.target.value)}>
+          <MenuItem key={1} value='Power'>
+            Power
+          </MenuItem>
+          <MenuItem key={2} value='Sail'>
+            Sail
+          </MenuItem>
+        </Select>
+      </FormControl>
       <TextField
         label='Length'
         fullWidth
@@ -96,8 +123,8 @@ export default function AddAsset1() {
         sx={{ maxWidth: '80%' }}
         fullWidth
         size='small'
-        endIcon={<SendIcon />}>
-        Send
+        endIcon={<SaveAltIcon />}>
+        Save
       </Button>
     </Box>
   );
