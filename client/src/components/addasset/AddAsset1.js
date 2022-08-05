@@ -9,9 +9,18 @@ import {
   MenuItem,
 } from '@mui/material';
 import { SaveAlt as SaveAltIcon } from '@mui/icons-material';
+import { Country, State, City } from 'country-state-city';
 
 export default function AddAsset1() {
   const [boatType, setBoatType] = React.useState('Power');
+
+  React.useEffect(() => {
+    console.log(Country.getAllCountries(), 'Country.getAllCountries()');
+    console.log(State.getStatesOfCountry(), 'State.getStatesOfCountry()');
+    console.log(City.getCitiesOfState(), 'City.getCitiesOfState()');
+    // https://github.com/harpreetkhalsagtbit/country-state-city
+    // https://npm.io/package/country-state-city
+  }, []);
 
   return (
     <Box
