@@ -237,12 +237,12 @@ export default function AddAsset2() {
         />
         <Button
           variant='contained'
-          label='Add more'
+          label='Add new'
           size='small'
           color='primary'
           onClick={addNewFacility1}
           startIcon={<AddIcon />}>
-          Add more
+          Add new
         </Button>
       </Box>
       <Box
@@ -283,17 +283,17 @@ export default function AddAsset2() {
         <TextField
           variant='outlined'
           size='small'
-          value={newFacility1}
+          value={newFacility2}
           onChange={handleNewFacility2}
         />
         <Button
           variant='contained'
-          label='Add more'
+          label='Add new'
           size='small'
           color='primary'
           onClick={addNewFacility2}
           startIcon={<AddIcon />}>
-          Add more
+          Add new
         </Button>
       </Box>
       <br />

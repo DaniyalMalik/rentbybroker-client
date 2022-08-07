@@ -21,9 +21,9 @@ import {
   Menu as MenuIcon,
   Search as SearchIcon,
   Login as LoginIcon,
+  VpnKey as VpnKeyIcon,
 } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
-
 import Drawer from './Drawer';
 
 const Search = styled('div')(({ theme }) => ({
@@ -85,10 +85,6 @@ export default function NavBar() {
     }
 
     setLeft(open);
-  };
-
-  const handleProfileMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
   };
 
   const handleMobileMenuClose = () => {
@@ -176,7 +172,7 @@ export default function NavBar() {
         </>
       ) : (
         <>
-          <MenuItem onClick={handleProfileMenuOpen}>
+          <MenuItem>
             <Link
               to='/login'
               style={{ textDecoration: 'none', color: 'inherit' }}>
@@ -190,7 +186,7 @@ export default function NavBar() {
               Login
             </Link>
           </MenuItem>
-          <MenuItem onClick={handleProfileMenuOpen}>
+          <MenuItem>
             <Link
               to='/register'
               style={{ textDecoration: 'none', color: 'inherit' }}>
@@ -199,7 +195,7 @@ export default function NavBar() {
                 aria-controls='primary-search-account-menu'
                 aria-haspopup='true'
                 color='primary'>
-                <LoginIcon />
+                <VpnKeyIcon />
               </IconButton>
               Register
             </Link>
@@ -264,7 +260,7 @@ export default function NavBar() {
               sx={{ color: '#1976d2' }}
             />
             {loggedIn ? (
-              <Box sx={{ display: { sm: 'none', md: 'inline' } }}>
+              <Box sx={{ display: { xs: 'none', sm: 'none', md: 'inline' } }}>
                 <IconButton
                   aria-label='show 9 plus new notifications'
                   color='primary'>
@@ -289,7 +285,7 @@ export default function NavBar() {
                 </Link>
               </Box>
             ) : (
-              <Box sx={{ display: { sm: 'none', md: 'inline' } }}>
+              <Box sx={{ display: { xs: 'none', sm: 'none', md: 'inline' } }}>
                 <Link
                   to='/login'
                   style={{

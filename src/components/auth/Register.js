@@ -9,7 +9,7 @@ import {
   ToggleButtonGroup,
   ToggleButton,
 } from '@mui/material';
-import { Login as LoginIcon } from '@mui/icons-material';
+import { VpnKey as VpnKeyIcon } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 
 export default function Register() {
@@ -101,7 +101,7 @@ export default function Register() {
             variant='contained'
             fullWidth
             size='small'
-            endIcon={<LoginIcon />}>
+            endIcon={<VpnKeyIcon />}>
             Register
           </Button>
         </CardContent>
