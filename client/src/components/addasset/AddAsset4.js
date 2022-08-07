@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Button, TextField, Box } from '@mui/material';
-import { Send as SendIcon } from '@mui/icons-material';
+import { Publish as PublishIcon } from '@mui/icons-material';
 
 export default function AddAsset4() {
   return (
@@ -29,8 +29,8 @@ export default function AddAsset4() {
         sx={{ maxWidth: '80%' }}
         fullWidth
         size='small'
-        endIcon={<SendIcon />}>
-        Send
+        endIcon={<PublishIcon />}>
+        Submit
       </Button>
     </Box>
   );

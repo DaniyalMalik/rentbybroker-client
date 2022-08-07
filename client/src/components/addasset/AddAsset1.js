@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useTheme } from '@mui/material/styles';
 import {
   Button,
   TextField,
@@ -7,20 +8,57 @@ import {
   InputLabel,
   Select,
   MenuItem,
+  Chip,
+  OutlinedInput,
 } from '@mui/material';
 import { SaveAlt as SaveAltIcon } from '@mui/icons-material';
-import { Country, State, City } from 'country-state-city';
+import { Country, City } from 'country-state-city';
+
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+};
+
+function getStyles(name, personName, theme) {
+  return {
+    fontWeight:
+      personName.indexOf(name) === -1
+        ? theme.typography.fontWeightRegular
+        : theme.typography.fontWeightMedium,
+  };
+}
 
 export default function AddAsset1() {
+  const theme = useTheme();
   const [boatType, setBoatType] = React.useState('Power');
+  const [country, setCountry] = React.useState('');
+  const [countries, setCountries] = React.useState([]);
+  const [preDefinedCities, setPreDefinedCities] = React.useState([]);
+  const [cities, setCities] = React.useState([]);
 
   React.useEffect(() => {
-    console.log(Country.getAllCountries(), 'Country.getAllCountries()');
-    console.log(State.getStatesOfCountry(), 'State.getStatesOfCountry()');
-    console.log(City.getCitiesOfState(), 'City.getCitiesOfState()');
+    setCountries(Country.getAllCountries());
+
     // https://github.com/harpreetkhalsagtbit/country-state-city
     // https://npm.io/package/country-state-city
   }, []);
+
+  React.useEffect(() => {
+    if (country) setPreDefinedCities(City.getCitiesOfCountry(country.isoCode));
+  }, [country]);
+
+  const handleChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setCities(typeof value === 'string' ? value.split(',') : value);
+  };
 
   return (
     <Box
@@ -33,6 +71,7 @@ export default function AddAsset1() {
         alignItems: 'center',
         flexDirection: 'column',
       }}>
+      {console.log('cities', cities)}
       <TextField
         label='Make'
         fullWidth
@@ -93,14 +132,55 @@ export default function AddAsset1() {
         variant='outlined'
         size='small'
       />
-      <TextField
-        label='Major Cities'
-        margin='normal'
-        sx={{ maxWidth: '80%' }}
-        fullWidth
-        variant='outlined'
-        size='small'
-      />
+      <FormControl sx={{ marginTop: 1, maxWidth: '80%' }} fullWidth>
+        <InputLabel id='demo-simple-select-label'>Country</InputLabel>
+        <Select
+          labelId='demo-simple-select-label'
+          id='demo-simple-select'
+          value={country}
+          label='Country'
+          size='small'
+          onChange={(e) => setCountry(e.target.value)}>
+          {countries.map((element, key) => (
+            <MenuItem key={key} value={element}>
+              {element.name}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+      {country && (
+        <>
+          <br />
+          <FormControl sx={{ m: 1, maxWidth: '80%' }} fullWidth>
+            <InputLabel id='demo-multiple-chip-label'>Major Cities</InputLabel>
+            <Select
+              labelId='demo-multiple-chip-label'
+              id='demo-multiple-chip'
+              multiple
+              value={cities}
+              size='small'
+              onChange={handleChange}
+              input={<OutlinedInput id='select-multiple-chip' label='Chip' />}
+              renderValue={(selected) => (
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                  {selected.map((value, key) => (
+                    <Chip key={key} label={value.name} />
+                  ))}
+                </Box>
+              )}
+              MenuProps={MenuProps}>
+              {preDefinedCities.map((element, key) => (
+                <MenuItem
+                  key={key}
+                  value={element}
+                  style={getStyles(element, cities, theme)}>
+                  {element.name}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </>
+      )}
       <TextField
         label='Pick Up Point'
         margin='normal'

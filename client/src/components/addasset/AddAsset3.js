@@ -24,6 +24,30 @@ import {
 } from '@mui/icons-material';
 import ImageUploading from 'react-images-uploading';
 
+const selectedCities = [
+  {
+    countryCode: 'PK',
+    latitude: '24.86080000',
+    longitude: '67.01040000',
+    name: 'Karachi',
+    stateCode: 'SD',
+  },
+  {
+    countryCode: 'PK',
+    latitude: '31.55800000',
+    longitude: '74.35071000',
+    name: 'Lahore',
+    stateCode: 'PB',
+  },
+  {
+    countryCode: 'PK',
+    latitude: '33.72148000',
+    longitude: '73.04329000',
+    name: 'Islamabad',
+    stateCode: 'IS',
+  },
+];
+
 export default function AddAsset3() {
   const [images, setImages] = React.useState([]);
   const [captainInfoCount, setCaptainInfoCount] = React.useState(1);
@@ -360,88 +384,6 @@ export default function AddAsset3() {
         <FormControlLabel control={<Checkbox />} label='Friday' />
         <FormControlLabel control={<Checkbox />} label='Saturday' />
       </FormGroup>
-      <FormControlLabel
-        control={<Checkbox checked={termRate} />}
-        onClick={() => setTermRate((prev) => !prev)}
-        label='Do you offer term charters or only hourly?'
-      />
-      <br />
-      <FormControlLabel
-        control={<Checkbox checked={diffPricing} />}
-        onClick={() => setDiffPricing((prev) => !prev)}
-        label='Do you have different pricing each day or is it the same?'
-      />
-      <br />
-      {diffPricing && (
-        <>
-          <Typography variant='h6' color='primary'>
-            Price for each day
-          </Typography>
-          <TextField
-            label='Sunday'
-            margin='normal'
-            type='number'
-            sx={{ maxWidth: '80%' }}
-            fullWidth
-            variant='outlined'
-            size='small'
-          />
-          <TextField
-            label='Monday'
-            margin='normal'
-            type='number'
-            sx={{ maxWidth: '80%' }}
-            fullWidth
-            variant='outlined'
-            size='small'
-          />
-          <TextField
-            label='Tuesday'
-            margin='normal'
-            type='number'
-            sx={{ maxWidth: '80%' }}
-            fullWidth
-            variant='outlined'
-            size='small'
-          />
-          <TextField
-            label='Wednesday'
-            margin='normal'
-            type='number'
-            sx={{ maxWidth: '80%' }}
-            fullWidth
-            variant='outlined'
-            size='small'
-          />
-          <TextField
-            label='Thursday'
-            margin='normal'
-            type='number'
-            sx={{ maxWidth: '80%' }}
-            fullWidth
-            variant='outlined'
-            size='small'
-          />
-          <TextField
-            label='Friday'
-            margin='normal'
-            type='number'
-            sx={{ maxWidth: '80%' }}
-            fullWidth
-            variant='outlined'
-            size='small'
-          />
-          <TextField
-            label='Saturday'
-            margin='normal'
-            type='number'
-            sx={{ maxWidth: '80%' }}
-            fullWidth
-            variant='outlined'
-            size='small'
-          />
-        </>
-      )}
       <br />
       <FormControl sx={{ maxWidth: '80%' }} fullWidth>
         <InputLabel id='demo-simple-select-label'>
@@ -492,45 +434,203 @@ export default function AddAsset3() {
           </MenuItem>
         </Select>
       </FormControl>
-      <TextField
-        label='Marina Pick-Up Fees'
-        margin='normal'
-        sx={{ maxWidth: '80%' }}
-        fullWidth
-        type='number'
-        variant='outlined'
-        size='small'
-      />
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          minWidth: '80%',
-        }}>
-        <Typography variant='h6' color='primary'>
-          Add a Fee
-        </Typography>
-        <Box>
-          <TextField
-            label='What is the fee for?'
-            margin='normal'
-            sx={{ maxWidth: '80%' }}
-            fullWidth
-            variant='outlined'
-            size='small'
-          />
-          <TextField
-            label='Amount'
-            margin='normal'
-            sx={{ maxWidth: '80%' }}
-            fullWidth
-            type='number'
-            variant='outlined'
-            size='small'
-          />
-        </Box>
-      </Box>
+      <br />
+      {selectedCities.map((city) => (
+        <>
+          <Typography variant='h6' color='primary'>
+            Pricing for {city.name}
+          </Typography>
+          <Box
+            sx={{
+              border: '2px solid #1976d2',
+              width: '75%',
+              borderRadius: '8px',
+              padding: '20px',
+            }}>
+            <FormControlLabel
+              control={<Checkbox checked={termRate} />}
+              onClick={() => setTermRate((prev) => !prev)}
+              label='Do you offer term charters or only hourly?'
+            />
+            <br />
+            <FormControlLabel
+              control={<Checkbox checked={diffPricing} />}
+              onClick={() => setDiffPricing((prev) => !prev)}
+              label='Do you have different pricing each day or is it the same?'
+            />
+            {diffPricing && (
+              <>
+                <br />
+                <Typography variant='h6' color='primary'>
+                  Price for each day
+                </Typography>
+                <TextField
+                  label='Sunday'
+                  margin='normal'
+                  type='number'
+                  sx={{ maxWidth: '80%' }}
+                  fullWidth
+                  variant='outlined'
+                  size='small'
+                />
+                <TextField
+                  label='Monday'
+                  margin='normal'
+                  type='number'
+                  sx={{ maxWidth: '80%' }}
+                  fullWidth
+                  variant='outlined'
+                  size='small'
+                />
+                <TextField
+                  label='Tuesday'
+                  margin='normal'
+                  type='number'
+                  sx={{ maxWidth: '80%' }}
+                  fullWidth
+                  variant='outlined'
+                  size='small'
+                />
+                <TextField
+                  label='Wednesday'
+                  margin='normal'
+                  type='number'
+                  sx={{ maxWidth: '80%' }}
+                  fullWidth
+                  variant='outlined'
+                  size='small'
+                />
+                <TextField
+                  label='Thursday'
+                  margin='normal'
+                  type='number'
+                  sx={{ maxWidth: '80%' }}
+                  fullWidth
+                  variant='outlined'
+                  size='small'
+                />
+                <TextField
+                  label='Friday'
+                  margin='normal'
+                  type='number'
+                  sx={{ maxWidth: '80%' }}
+                  fullWidth
+                  variant='outlined'
+                  size='small'
+                />
+                <TextField
+                  label='Saturday'
+                  margin='normal'
+                  type='number'
+                  sx={{ maxWidth: '80%' }}
+                  fullWidth
+                  variant='outlined'
+                  size='small'
+                />
+              </>
+            )}
+            <TextField
+              label='Marina Pick-Up Fees'
+              margin='normal'
+              sx={{ maxWidth: '80%' }}
+              fullWidth
+              type='number'
+              variant='outlined'
+              size='small'
+            />
+            <Box
+              sx={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                minWidth: '80%',
+              }}>
+              <Typography variant='h6' color='primary'>
+                Add a Fee
+              </Typography>
+              <Box>
+                <TextField
+                  label='What is the fee for?'
+                  margin='normal'
+                  sx={{ maxWidth: '80%' }}
+                  fullWidth
+                  variant='outlined'
+                  size='small'
+                />
+                <TextField
+                  label='Amount'
+                  margin='normal'
+                  sx={{ maxWidth: '80%' }}
+                  fullWidth
+                  type='number'
+                  variant='outlined'
+                  size='small'
+                />
+              </Box>
+            </Box>
+            {termRate && (
+              <>
+                <Typography variant='h6' color='primary'>
+                  Wholesale Term rate
+                </Typography>
+                <Box
+                  sx={{
+                    border: '2px solid #1976d2',
+                    width: '75%',
+                    borderRadius: '8px',
+                    padding: '20px',
+                  }}>
+                  <FormControl sx={{ maxWidth: '80%' }} fullWidth>
+                    <InputLabel id='demo-simple-select-label'>Days</InputLabel>
+                    <Select
+                      labelId='demo-simple-select-label'
+                      id='demo-simple-select'
+                      size='small'
+                      value={numberOfWholeSaleDays}
+                      label='Days'
+                      onChange={(e) =>
+                        setNumberOfWholeSaleDays(e.target.value)
+                      }>
+                      <MenuItem key={1} value={1}>
+                        1
+                      </MenuItem>
+                      <MenuItem key={2} value={2}>
+                        2
+                      </MenuItem>
+                      <MenuItem key={3} value={3}>
+                        3
+                      </MenuItem>
+                      <MenuItem key={4} value={4}>
+                        4
+                      </MenuItem>
+                      <MenuItem key={5} value={5}>
+                        5
+                      </MenuItem>
+                      <MenuItem key={6} value={6}>
+                        6
+                      </MenuItem>
+                      <MenuItem key={7} value={7}>
+                        7
+                      </MenuItem>
+                    </Select>
+                  </FormControl>
+                  <TextField
+                    label='Amount'
+                    margin='normal'
+                    sx={{ maxWidth: '80%' }}
+                    name='wholeSaleRate'
+                    fullWidth
+                    type='number'
+                    variant='outlined'
+                    size='small'
+                  />
+                </Box>
+              </>
+            )}
+          </Box>
+          <br />
+        </>
+      ))}
       <FormControlLabel
         control={<Checkbox checked={inclPricing} />}
         onClick={() => setInclPricing((prev) => !prev)}
@@ -584,63 +684,6 @@ export default function AddAsset3() {
         {!inclPricing && crewMembers}
       </Box>
       <br />
-      {termRate && (
-        <>
-          <Typography variant='h6' color='primary'>
-            Wholesale Term rate
-          </Typography>
-          <Box
-            sx={{
-              border: '2px solid #1976d2',
-              width: '75%',
-              borderRadius: '8px',
-              padding: '20px',
-            }}>
-            <FormControl sx={{ maxWidth: '80%' }} fullWidth>
-              <InputLabel id='demo-simple-select-label'>Days</InputLabel>
-              <Select
-                labelId='demo-simple-select-label'
-                id='demo-simple-select'
-                size='small'
-                value={numberOfWholeSaleDays}
-                label='Days'
-                onChange={(e) => setNumberOfWholeSaleDays(e.target.value)}>
-                <MenuItem key={1} value={1}>
-                  1
-                </MenuItem>
-                <MenuItem key={2} value={2}>
-                  2
-                </MenuItem>
-                <MenuItem key={3} value={3}>
-                  3
-                </MenuItem>
-                <MenuItem key={4} value={4}>
-                  4
-                </MenuItem>
-                <MenuItem key={5} value={5}>
-                  5
-                </MenuItem>
-                <MenuItem key={6} value={6}>
-                  6
-                </MenuItem>
-                <MenuItem key={7} value={7}>
-                  7
-                </MenuItem>
-              </Select>
-            </FormControl>
-            <TextField
-              label='Amount'
-              margin='normal'
-              sx={{ maxWidth: '80%' }}
-              name='wholeSaleRate'
-              fullWidth
-              type='number'
-              variant='outlined'
-              size='small'
-            />
-          </Box>
-        </>
-      )}
       <Box
         sx={{
           display: 'flex',
