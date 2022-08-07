@@ -7,6 +7,10 @@ import {
   FormControlLabel,
   FormGroup,
   FormLabel,
+  MenuItem,
+  Select,
+  InputLabel,
+  FormControl,
   // FormControl,
   // InputLabel,
   // Select,
@@ -15,20 +19,22 @@ import {
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/material.css';
 import { Update as UpdateIcon } from '@mui/icons-material';
-// import { uuid } from 'uuidv4';
+import { Country, City } from 'country-state-city';
 
 export default function Profile() {
   const [value, setValue] = React.useState();
-  // const [country, setCountry] = React.useState('');
-  // const [state, setState] = React.useState('');
-  // const [city, setCity] = React.useState('');
-  // const [countries, setCountries] = React.useState('');
-  // const [cities, setCities] = React.useState('');
+  const [country, setCountry] = React.useState('');
+  const [city, setCity] = React.useState('');
+  const [countries, setCountries] = React.useState([]);
+  const [cities, setCities] = React.useState([]);
 
-  // const handleChange = (e) => {
-  //   console.log(e.target.value, 'e.target.value');
-  //   setCountry(e.target.value);
-  // };
+  React.useEffect(() => {
+    setCountries(Country.getAllCountries());
+  }, []);
+
+  React.useEffect(() => {
+    if (country) setCities(City.getCitiesOfCountry(country.isoCode));
+  }, [country]);
 
   return (
     <Box
@@ -120,22 +126,43 @@ export default function Profile() {
           label='Airplanes'
         />
       </FormGroup>
-      {/* <FormControl fullWidth>
-        <InputLabel id='demo-simple-select-label'>Countries</InputLabel>
+      <FormControl sx={{ marginTop: 1 }} fullWidth>
+        <InputLabel id='demo-simple-select-label'>Country</InputLabel>
         <Select
           labelId='demo-simple-select-label'
           id='demo-simple-select'
           value={country}
-          label='Age'
-          onChange={handleChange}>
-          {countries.length > 0 &&
-            countries.map((val) => (
-              <MenuItem key={uuid()} value={val.name}>
-                {val.name}
-              </MenuItem>
-            ))}
+          label='Country'
+          size='small'
+          onChange={(e) => setCountry(e.target.value)}>
+          {countries.map((element, key) => (
+            <MenuItem key={key} value={element}>
+              {element.name}
+            </MenuItem>
+          ))}
         </Select>
-      </FormControl> */}
+      </FormControl>
+      {country && (
+        <>
+          <br />
+          <FormControl sx={{ marginTop: 1 }} fullWidth>
+            <InputLabel id='demo-simple-select-label'>City</InputLabel>
+            <Select
+              labelId='demo-simple-select-label'
+              id='demo-simple-select'
+              value={city}
+              label='City'
+              size='small'
+              onChange={(e) => setCity(e.target.value)}>
+              {cities.map((element, key) => (
+                <MenuItem key={key} value={element}>
+                  {element.name}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </>
+      )}
       <br />
       <Button
         variant='contained'

@@ -20,9 +20,9 @@ import {
   Notifications as NotificationsIcon,
   Menu as MenuIcon,
   Search as SearchIcon,
-  AccountCircle,
+  Login as LoginIcon,
 } from '@mui/icons-material';
-import { Link, Outlet } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import Drawer from './Drawer';
 
@@ -145,36 +145,79 @@ export default function NavBar() {
       }}
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}>
-      <MenuItem>
-        <IconButton aria-label='show 17 new notifications' color='inherit'>
-          <Badge badgeContent={17} color='error'>
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          aria-label='account of current user'
-          aria-controls='primary-search-account-menu'
-          aria-haspopup='true'
-          color='inherit'>
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
-      </MenuItem>
+      {loggedIn ? (
+        <>
+          <MenuItem>
+            <Link
+              to='/settings'
+              style={{ textDecoration: 'none', color: 'inherit' }}>
+              <IconButton
+                aria-label='account of current user'
+                aria-controls='primary-search-account-menu'
+                aria-haspopup='true'
+                color='primary'>
+                <Avatar
+                  alt='Remy Sharp'
+                  sx={{ width: 36, height: 36 }}
+                  src='/static/images/avatar/2.jpg'
+                />
+              </IconButton>
+              Test User
+            </Link>
+          </MenuItem>
+          <MenuItem>
+            <IconButton aria-label='show 17 new notifications' color='primary'>
+              <Badge badgeContent={17} color='error'>
+                <NotificationsIcon />
+              </Badge>
+            </IconButton>
+            Notifications
+          </MenuItem>
+        </>
+      ) : (
+        <>
+          <MenuItem onClick={handleProfileMenuOpen}>
+            <Link
+              to='/login'
+              style={{ textDecoration: 'none', color: 'inherit' }}>
+              <IconButton
+                aria-label='account of current user'
+                aria-controls='primary-search-account-menu'
+                aria-haspopup='true'
+                color='primary'>
+                <LoginIcon />
+              </IconButton>
+              Login
+            </Link>
+          </MenuItem>
+          <MenuItem onClick={handleProfileMenuOpen}>
+            <Link
+              to='/register'
+              style={{ textDecoration: 'none', color: 'inherit' }}>
+              <IconButton
+                aria-label='account of current user'
+                aria-controls='primary-search-account-menu'
+                aria-haspopup='true'
+                color='primary'>
+                <LoginIcon />
+              </IconButton>
+              Register
+            </Link>
+          </MenuItem>
+        </>
+      )}
     </Menu>
   );
 
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Drawer open={left} toggleDrawer={toggleDrawer} />
-      <AppBar position='fixed'>
+      <AppBar position='fixed' sx={{ backgroundColor: '#ffffff' }}>
         <Toolbar sx={{ minHeight: '50px !important' }}>
           {loggedIn && (
             <IconButton
               edge='start'
-              color='inherit'
+              color='primary'
               aria-label='open drawer'
               onClick={(e) => toggleDrawer(true, e)}
               sx={{ mr: 2 }}>
@@ -185,10 +228,12 @@ export default function NavBar() {
             to={loggedIn ? '/' : '/login'}
             style={{ textDecoration: 'none', color: 'inherit' }}>
             <Typography
-              variant='h6'
+              variant='h5'
               noWrap
               component='div'
-              sx={{ display: { xs: 'none', sm: 'block' } }}>
+              color='primary'
+              // sx={{ display: { xs: 'none', sm: 'block' } }}
+            >
               RentByBroker
             </Typography>
           </Link>
@@ -204,22 +249,25 @@ export default function NavBar() {
             </Search>
           )}
           <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+          <Box
+          //  sx={{ display: { xs: 'none', md: 'flex' } }}
+          >
             <FormControlLabel
               control={
                 <Switch
-                  color='secondary'
+                  color='primary'
                   checked={loggedIn}
                   onClick={() => setLoggedIn((prev) => !prev)}
                 />
               }
               label='Logged In'
+              sx={{ color: '#1976d2' }}
             />
             {loggedIn ? (
-              <>
+              <Box sx={{ display: { sm: 'none', md: 'inline' } }}>
                 <IconButton
-                  aria-label='show 17 new notifications'
-                  color='inherit'>
+                  aria-label='show 9 plus new notifications'
+                  color='primary'>
                   <Badge badgeContent={10} max={9} color='error'>
                     <NotificationsIcon />
                   </Badge>
@@ -231,7 +279,7 @@ export default function NavBar() {
                     aria-controls={menuId}
                     aria-haspopup='true'
                     // onClick={handleProfileMenuOpen}
-                    color='inherit'>
+                    color='primary'>
                     <Avatar
                       alt='Remy Sharp'
                       sx={{ width: 36, height: 36 }}
@@ -239,20 +287,26 @@ export default function NavBar() {
                     />
                   </IconButton>
                 </Link>
-              </>
+              </Box>
             ) : (
-              <>
+              <Box sx={{ display: { sm: 'none', md: 'inline' } }}>
                 <Link
                   to='/login'
-                  style={{ textDecoration: 'none', color: 'inherit' }}>
-                  <Button color='inherit'>Login</Button>
+                  style={{
+                    textDecoration: 'none',
+                    color: 'inherit',
+                  }}>
+                  <Button color='primary'>Login</Button>
                 </Link>
                 <Link
                   to='/register'
-                  style={{ textDecoration: 'none', color: 'inherit' }}>
-                  <Button color='inherit'>Register</Button>
+                  style={{
+                    textDecoration: 'none',
+                    color: 'inherit',
+                  }}>
+                  <Button color='primary'>Register</Button>
                 </Link>
-              </>
+              </Box>
             )}
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
@@ -261,7 +315,7 @@ export default function NavBar() {
               aria-controls={mobileMenuId}
               aria-haspopup='true'
               onClick={handleMobileMenuOpen}
-              color='inherit'>
+              color='primary'>
               <MoreIcon />
             </IconButton>
           </Box>
@@ -269,7 +323,6 @@ export default function NavBar() {
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
-      <Outlet />
     </Box>
   );
 }

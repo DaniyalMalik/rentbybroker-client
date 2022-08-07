@@ -39,8 +39,8 @@ export default function AddAsset1() {
   const [boatType, setBoatType] = React.useState('Power');
   const [country, setCountry] = React.useState('');
   const [countries, setCountries] = React.useState([]);
-  const [preDefinedCities, setPreDefinedCities] = React.useState([]);
   const [cities, setCities] = React.useState([]);
+  const [preDefinedCities, setPreDefinedCities] = React.useState([]);
 
   React.useEffect(() => {
     setCountries(Country.getAllCountries());
@@ -71,7 +71,6 @@ export default function AddAsset1() {
         alignItems: 'center',
         flexDirection: 'column',
       }}>
-      {console.log('cities', cities)}
       <TextField
         label='Make'
         fullWidth

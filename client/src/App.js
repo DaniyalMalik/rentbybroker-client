@@ -3,7 +3,7 @@ import Login from './components/auth/Login';
 import ForgotPassword from './components/auth/ForgotPassword';
 import ResetPassword from './components/auth/ResetPassword';
 import Register from './components/auth/Register';
-import NavBar from './components/header/NavBar';
+import { Index as NavBar } from './components/header/Index';
 import Dashboard from './components/home/Dashboard';
 import Settings from './components/settings/Settings';
 import NotFound from './components/pages/NotFound';

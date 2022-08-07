@@ -45,31 +45,33 @@ export default function Settings() {
   };
 
   return (
-    <Box
-      sx={{
-        flexGrow: 1,
-        bgcolor: 'background.paper',
-        display: 'flex',
-        alignItems: 'baseline',
-        height: 400,
-        marginTop: '50px',
-      }}>
-      <Tabs
-        orientation='vertical'
-        variant='scrollable'
-        value={value}
-        onChange={handleChange}
-        aria-label='Vertical tabs example'
-        sx={{ borderRight: 1, borderColor: 'divider' }}>
-        <Tab label='Update Profile' {...a11yProps(0)} />
-        <Tab label='Change Password' {...a11yProps(1)} />
-      </Tabs>
-      <TabPanel value={value} index={0}>
-        <Profile />
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        <ChangePassword />
-      </TabPanel>
-    </Box>
+    <>
+      <Box
+        sx={{
+          flexGrow: 1,
+          bgcolor: 'background.paper',
+          display: 'flex',
+          alignItems: 'baseline',
+          height: 400,
+          marginTop: '50px',
+        }}>
+        <Tabs
+          orientation='vertical'
+          variant='scrollable'
+          value={value}
+          onChange={handleChange}
+          aria-label='Vertical tabs example'
+          sx={{ borderRight: 1, borderColor: 'divider' }}>
+          <Tab label='Update Profile' {...a11yProps(0)} />
+          <Tab label='Change Password' {...a11yProps(1)} />
+        </Tabs>
+        <TabPanel value={value} index={0}>
+          <Profile />
+        </TabPanel>
+        <TabPanel value={value} index={1}>
+          <ChangePassword />
+        </TabPanel>
+      </Box>
+    </>
   );
 }
