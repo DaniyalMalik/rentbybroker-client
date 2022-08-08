@@ -57,7 +57,7 @@ export default function Contact() {
         sx={{ maxWidth: '80%' }}
         fullWidth
         size='small'
-        endIcon={<SendIcon />}>
+        endIcon={<SendIcon fontSize='small'/>}>
         Send
       </Button>
     </Box>

@@ -21,7 +21,7 @@ export default function Login() {
         justifyContent: 'center',
         alignItems: 'center',
       }}>
-      <Card sx={{ maxWidth: 345, padding: '50px' }}>
+      <Card sx={{ maxWidth: 345, padding: '50px', borderRadius: '10px' }}>
         <CardContent
           sx={{
             display: 'flex',
@@ -54,7 +54,7 @@ export default function Login() {
             variant='contained'
             fullWidth
             size='small'
-            endIcon={<LoginIcon />}>
+            endIcon={<LoginIcon fontSize='small' />}>
             Login
           </Button>
         </CardContent>

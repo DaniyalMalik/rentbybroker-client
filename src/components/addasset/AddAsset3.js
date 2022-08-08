@@ -321,7 +321,7 @@ export default function AddAsset3() {
                 variant='contained'
                 size='small'
                 sx={isDragging ? { color: 'red' } : null}
-                startIcon={<UploadIcon />}
+                startIcon={<UploadIcon fontSize='small' />}
                 onClick={onImageUpload}
                 {...dragProps}>
                 Upload
@@ -329,7 +329,7 @@ export default function AddAsset3() {
               &nbsp;
               <Button
                 size='small'
-                startIcon={<CloseIcon />}
+                startIcon={<CloseIcon fontSize='small' />}
                 variant='contained'
                 disabled={images.length === 0}
                 onClick={onImageRemoveAll}>
@@ -354,14 +354,14 @@ export default function AddAsset3() {
                       sx={{ margin: '5px' }}
                       onClick={() => onImageUpdate(index)}
                       size='small'>
-                      <UpdateIcon />
+                      <UpdateIcon fontSize='small'/>
                     </Fab>
                     <Fab
                       sx={{ margin: '5px' }}
                       color='primary'
                       onClick={() => onImageRemove(index)}
                       size='small'>
-                      <RemoveIcon />
+                      <RemoveIcon fontSize='small'/>
                     </Fab>
                   </Box>
                 </Box>
@@ -653,7 +653,7 @@ export default function AddAsset3() {
             color='primary'
             onClick={handleAddCrewForm}
             size='small'>
-            <AddIcon />
+            <AddIcon fontSize='small'/>
           </Fab>
           <Fab
             sx={{ margin: '10px' }}
@@ -661,7 +661,7 @@ export default function AddAsset3() {
             disabled={crewCount === 1}
             onClick={handleRemoveCrewForm}
             size='small'>
-            <RemoveIcon />
+            <RemoveIcon fontSize='small'/>
           </Fab>
         </Box>
       </Box>
@@ -700,7 +700,7 @@ export default function AddAsset3() {
             color='primary'
             onClick={handleAddCaptainInfoForm}
             size='small'>
-            <AddIcon />
+            <AddIcon fontSize='small'/>
           </Fab>
           <Fab
             sx={{ margin: '10px' }}
@@ -708,7 +708,7 @@ export default function AddAsset3() {
             disabled={captainInfoCount === 1}
             onClick={handleRemoveCaptainInfoForm}
             size='small'>
-            <RemoveIcon />
+            <RemoveIcon fontSize='small'/>
           </Fab>
         </Box>
       </Box>
@@ -727,7 +727,7 @@ export default function AddAsset3() {
         sx={{ maxWidth: '80%' }}
         fullWidth
         size='small'
-        endIcon={<SaveAltIcon />}>
+        endIcon={<SaveAltIcon fontSize='small'/>}>
         Save
       </Button>
     </Box>

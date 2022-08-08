@@ -211,7 +211,7 @@ export default function AddAsset1() {
         sx={{ maxWidth: '80%' }}
         fullWidth
         size='small'
-        endIcon={<SaveAltIcon />}>
+        endIcon={<SaveAltIcon fontSize='small'/>}>
         Save
       </Button>
     </Box>

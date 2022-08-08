@@ -240,9 +240,8 @@ export default function AddAsset2() {
           label='Add new'
           size='small'
           color='primary'
-          onClick={addNewFacility1}
-          startIcon={<AddIcon />}>
-          Add new
+          onClick={addNewFacility1}>
+          Add
         </Button>
       </Box>
       <Box
@@ -291,9 +290,8 @@ export default function AddAsset2() {
           label='Add new'
           size='small'
           color='primary'
-          onClick={addNewFacility2}
-          startIcon={<AddIcon />}>
-          Add new
+          onClick={addNewFacility2}>
+          Add
         </Button>
       </Box>
       <br />
@@ -302,7 +300,7 @@ export default function AddAsset2() {
         sx={{ maxWidth: '80%' }}
         fullWidth
         size='small'
-        endIcon={<SaveAltIcon />}>
+        endIcon={<SaveAltIcon fontSize='small' />}>
         Save
       </Button>
     </Box>

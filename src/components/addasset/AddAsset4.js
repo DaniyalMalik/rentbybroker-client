@@ -29,7 +29,7 @@ export default function AddAsset4() {
         sx={{ maxWidth: '80%' }}
         fullWidth
         size='small'
-        endIcon={<PublishIcon />}>
+        endIcon={<PublishIcon fontSize='small'/>}>
         Submit
       </Button>
     </Box>

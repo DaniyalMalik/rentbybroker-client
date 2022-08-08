@@ -20,7 +20,7 @@ export default function ResetPassword() {
         justifyContent: 'center',
         alignItems: 'center',
       }}>
-      <Card sx={{ maxWidth: 345, padding: '50px' }}>
+      <Card sx={{ maxWidth: 345, padding: '50px', borderRadius: '10px' }}>
         <CardContent
           sx={{
             display: 'flex',
@@ -28,7 +28,7 @@ export default function ResetPassword() {
             alignItems: 'center',
             flexDirection: 'column',
           }}>
-          <Typography variant='h3' color='primary'>
+          <Typography variant='h4' color='primary'>
             Reset Password
           </Typography>
           <TextField
@@ -48,7 +48,7 @@ export default function ResetPassword() {
             variant='contained'
             fullWidth
             size='small'
-            endIcon={<SendIcon />}>
+            endIcon={<SendIcon fontSize='small' />}>
             Send
           </Button>
         </CardContent>

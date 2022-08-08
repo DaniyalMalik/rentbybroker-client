@@ -168,7 +168,7 @@ export default function Profile() {
         variant='contained'
         fullWidth
         size='small'
-        endIcon={<UpdateIcon />}>
+        endIcon={<UpdateIcon fontSize='small'/>}>
         Update Profile
       </Button>
     </Box>

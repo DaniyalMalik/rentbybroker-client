@@ -20,7 +20,7 @@ export default function ForgotPassword() {
         justifyContent: 'center',
         alignItems: 'center',
       }}>
-      <Card sx={{ maxWidth: 345, padding: '50px' }}>
+      <Card sx={{ maxWidth: 345, padding: '50px', borderRadius: '10px' }}>
         <CardContent
           sx={{
             display: 'flex',
@@ -58,7 +58,7 @@ export default function ForgotPassword() {
             variant='contained'
             fullWidth
             size='small'
-            endIcon={<KeyIcon />}>
+            endIcon={<KeyIcon fontSize='small'/>}>
             Change
           </Button>
         </CardActions>

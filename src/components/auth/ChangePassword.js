@@ -35,7 +35,7 @@ export default function ChangePassword() {
         size='small'
       />
       <br />
-      <Button variant='contained' fullWidth size='small' endIcon={<KeyIcon />}>
+      <Button variant='contained' fullWidth size='small' endIcon={<KeyIcon fontSize='small' />}>
         Change
       </Button>
     </Box>

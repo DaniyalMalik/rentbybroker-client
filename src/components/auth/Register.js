@@ -24,12 +24,13 @@ export default function Register() {
       sx={{
         width: '100%',
         height: '90vh',
-        marginTop: '100px',
+        marginTop: '150px',
+        marginBottom: '100px',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
       }}>
-      <Card sx={{ maxWidth: 345, padding: '50px' }}>
+      <Card sx={{ maxWidth: 345, padding: '50px', borderRadius: '10px' }}>
         <CardContent
           sx={{
             display: 'flex',
@@ -101,7 +102,7 @@ export default function Register() {
             variant='contained'
             fullWidth
             size='small'
-            endIcon={<VpnKeyIcon />}>
+            endIcon={<VpnKeyIcon fontSize='small' />}>
             Register
           </Button>
         </CardContent>

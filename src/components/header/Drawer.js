@@ -29,7 +29,7 @@ export default function Drawer({ open, toggleDrawer }) {
           <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                <HomeIcon color='primary' />
+                <HomeIcon fontSize='small' color='primary' />
               </ListItemIcon>
               <ListItemText primary={'Home'} />
             </ListItemButton>
@@ -41,7 +41,7 @@ export default function Drawer({ open, toggleDrawer }) {
           <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                <AddBoxIcon color='primary' />
+                <AddBoxIcon color='primary' fontSize='small' />
               </ListItemIcon>
               <ListItemText primary={'List An Asset'} />
             </ListItemButton>
@@ -53,7 +53,7 @@ export default function Drawer({ open, toggleDrawer }) {
           <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                <SettingsIcon color='primary' />
+                <SettingsIcon color='primary' fontSize='small' />
               </ListItemIcon>
               <ListItemText primary={'Settings'} />
             </ListItemButton>
@@ -65,26 +65,13 @@ export default function Drawer({ open, toggleDrawer }) {
           <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                <ContactPageIcon color='primary' />
+                <ContactPageIcon color='primary' fontSize='small' />
               </ListItemIcon>
               <ListItemText primary={'Contact Us'} />
             </ListItemButton>
           </ListItem>
         </Link>
       </List>
-      {/* <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List> */}
     </Box>
   );
 
